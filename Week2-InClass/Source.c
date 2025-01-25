@@ -10,14 +10,21 @@ int subtract(int a, int b);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
+void getNumber(int*);               // 
 
 int main(void) {
     // Variable declarations
-    int choice;
+    int choice = 0;
+	int (*Factorialptr)(int n); // Function pointer for factorial function
+	Factorialptr = factorial; // Assign the address of the factorial function to the pointer
     char input[100]; // For safer input handling
     int (*funcPtr)(int, int);
     funcPtr = add;
     int num1, num2, result;
+
+    int (*calculateFunc[])(int, int) = { NULL, add, subtract, NULL, NULL, NULL };
+    int result = 0;
+    int numA = 0, numB = 0;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -28,7 +35,6 @@ int main(void) {
     // Accept user input for menu selection
     printf("\nEnter your choice: ");
     if (fgets(input, sizeof(input), stdin) != NULL) {
-        // Parse the input (placeholder)
         sscanf_s(input, "%d", &choice);
     }
 
@@ -48,13 +54,19 @@ int main(void) {
         printf("The result of %d + %d is %d\n", num1, num2, result);
         break;
     case 3:
-        // Call subtract function (placeholder)
+        getNumber(&numA);
+        getNumber(&numB);
+        result = (*calculateFunc[choice - 1])(numA, numB);
         break;
     case 4:
         // Call calculate_area function (placeholder)
         break;
     case 5:
-        // Call factorial function (placeholder)
+		printf("Enter a number: ");
+		if (fgets(input, sizeof(input), stdin) != NULL) {
+			sscanf_s(input, "%d", &choice);
+		}
+		printf("Factorial of %d is %llu\n", choice, Factorialptr(choice)); // Call factorial function using function pointer
         break;
     default:
         printf("Invalid choice. Please try again.\n");
@@ -93,8 +105,12 @@ double calculateArea(double radius) {
 
 // Student 5: Develop factorial() function
 unsigned long long factorial(int n) {
-    // Placeholder
-    return 0; // Replace with actual logic
+	if (n >= 1) {
+		return n * factorial(n - 1);
+    } else {
+        return 1;
+    }
+     ; // Replace with actual logic
 }
 
 // Student 6: Implement display_menu() function
@@ -106,4 +122,14 @@ void displayMenu(void) {
     printf("3. Subtract two numbers\n");
     printf("4. Calculate the area of a circle\n");
     printf("5. Calculate the factorial of a number\n");
+}
+
+void getNumber(int* numbers) {
+    char input[100] = "";
+
+    printf("Please input a number: ");
+
+	if (fgets(input, sizeof(input), stdin) != NULL) {
+        sscanf_s(input, "%d", numbers);
+	}
 }
