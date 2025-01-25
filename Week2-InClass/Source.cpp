@@ -6,25 +6,19 @@
 // Function declarations
 void greet(void);                    // Student 1
 int add(int a, int b);               // Student 2
-int subtract(int num1, int num2, int difference);          // Student 3
+int subtract(int a, int b);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
-void getNumber(int*);               // 
 
 int main(void) {
     // Variable declarations
-    int choice = 0;
-	int (*Factorialptr)(int n); // Function pointer for factorial function
-	Factorialptr = factorial; // Assign the address of the factorial function to the pointer
+    int choice;
     char input[100]; // For safer input handling
+    // Function pointer
     int (*funcPtr)(int, int);
     funcPtr = add;
     int num1, num2, result;
-
-    int (*calculateFunc[])(int, int) = { NULL, add, subtract, NULL, NULL, NULL };
-    int result = 0;
-    int numA = 0, numB = 0;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -35,6 +29,8 @@ int main(void) {
     // Accept user input for menu selection
     printf("\nEnter your choice: ");
     if (fgets(input, sizeof(input), stdin) != NULL) {
+        // Parse the input (placeholder)
+        // Example: sscanf_s(input, "%d", &choice);
         sscanf_s(input, "%d", &choice);
     }
 
@@ -53,24 +49,14 @@ int main(void) {
         result = funcPtr(num1, num2);
         printf("The result of %d + %d is %d\n", num1, num2, result);
         break;
-    case 3: 
-        SubtractPtr(); // Call subtract function (placeholder)
+    case 3:
+        // Call subtract function (placeholder)
         break;
     case 4:
         // Call calculate_area function (placeholder)
-
-        printf("please input a double");
-        fgets(20, 20, stdin);
-        double radius;
-        ;
-        calculateArea(radius);
         break;
     case 5:
-		printf("Enter a number: ");
-		if (fgets(input, sizeof(input), stdin) != NULL) {
-			sscanf_s(input, "%d", &choice);
-		}
-		printf("Factorial of %d is %llu\n", choice, Factorialptr(choice)); // Call factorial function using function pointer
+        // Call factorial function (placeholder)
         break;
     default:
         printf("Invalid choice. Please try again.\n");
@@ -85,7 +71,6 @@ int main(void) {
 // Student 1: Implement greet() function
 void greet(void) {
     // Placeholder
-    printf("Hello, This is collaborative project in C Programming II\n");
 }
 
 // Student 2: Modify add() function to take user input
@@ -96,41 +81,22 @@ int add(int a, int b) {
     return result; // Replace with actual logic
 }
 
-
 // Student 3: Complete subtract() function
-int (*SubtractPtr)(int);
-SubtractPtr = subtract;
-int subtract(int num1, int num2 , int difference ) {
+int subtract(int a, int b) {
     // Placeholder
-
-    printf("please enter in first number:");
-    scanf("%d", num1);
-    printf("please enter second number:");
-    scanf("%d", num2);
-    difference = num1 - num2;
-    printf("The answer of %d subtract %d is equal to %d", num1, num2, difference);
-
     return 0; // Replace with actual logic
 }
 
 // Student 4: Implement calculate_area() function
-/*
-* takes the double and uses it as the radius for a circle, it calculates the area
-*/
 double calculateArea(double radius) {
-    
-    double area = 3.1415926 * (pow(radius, 2));
-    return area;
+    // Placeholder
+    return 0.0; // Replace with actual logic
 }
 
 // Student 5: Develop factorial() function
 unsigned long long factorial(int n) {
-	if (n >= 1) {
-		return n * factorial(n - 1);
-    } else {
-        return 1;
-    }
-     ; // Replace with actual logic
+    // Placeholder
+    return 0; // Replace with actual logic
 }
 
 // Student 6: Implement display_menu() function
@@ -142,14 +108,4 @@ void displayMenu(void) {
     printf("3. Subtract two numbers\n");
     printf("4. Calculate the area of a circle\n");
     printf("5. Calculate the factorial of a number\n");
-}
-
-void getNumber(int* numbers) {
-    char input[100] = "";
-
-    printf("Please input a number: ");
-
-	if (fgets(input, sizeof(input), stdin) != NULL) {
-        sscanf_s(input, "%d", numbers);
-	}
 }
