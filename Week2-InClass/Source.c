@@ -60,6 +60,12 @@ int main(void) {
         break;
     case 4:
         // Call calculate_area function (placeholder)
+
+        printf("please input a double");
+        fgets(20, 20, stdin);
+        double radius;
+        ;
+        calculateArea(radius);
         break;
     case 5:
 		printf("Enter a number: ");
@@ -99,9 +105,13 @@ int subtract(int a, int b) {
 }
 
 // Student 4: Implement calculate_area() function
+/*
+* takes the double and uses it as the radius for a circle, it calculates the area
+*/
 double calculateArea(double radius) {
-    // Placeholder
-    return 0.0; // Replace with actual logic
+    
+    double area = 3.1415926 * (pow(radius, 2));
+    return area;
 }
 
 // Student 5: Develop factorial() function
