@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 // Define constants (if necessary)
 // Example: #define PI 3.14159265358979323846
@@ -6,7 +7,7 @@
 // Function declarations
 void greet(void);                    // Student 1
 int add(int a, int b);               // Student 2
-int subtract(int num1, int num2, int difference);          // Student 3
+int subtract(int a, int b);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
@@ -15,16 +16,18 @@ void getNumber(int*);               //
 int main(void) {
 	// Variable declarations
 	int choice = 0;
-	int (*Factorialptr)(int n); // Function pointer for factorial function
-	Factorialptr = factorial; // Assign the address of the factorial function to the pointer
 	char input[100]; // For safer input handling
+	int num1 = 0, num2 = 0, result = 0;
+
+	int (*SubtractPtr)(int, int);
+	SubtractPtr = subtract;
+	unsigned long long (*Factorialptr)(int n); // Function pointer for factorial function
+	Factorialptr = factorial; // Assign the address of the factorial function to the pointer
 	int (*funcPtr)(int, int);
 	funcPtr = add;
-	int num1, num2, result;
 
-	int (*calculateFunc[])(int, int) = { NULL, add, subtract, NULL, NULL, NULL };
-	int result = 0;
-	int numA = 0, numB = 0;
+	//int (*calculateFunc[])(int, int) = { NULL, add, subtract, NULL, NULL, NULL };
+	//int numA = 0, numB = 0;
 
 	// Display a welcome message
 	printf("Welcome to the Collaborative Code Management Program!\n");
@@ -54,11 +57,20 @@ int main(void) {
 		printf("The result of %d + %d is %d\n", num1, num2, result);
 		break;
 	case 3:
-		SubtractPtr(); // Call subtract function (placeholder)
-
+		getNumber(&num1);
+		getNumber(&num2);
+		result = SubtractPtr(num1, num2); // Call subtract function (placeholder)
+		printf("The answer of %d subtract %d is equal to %d", num1, num2, num1 - num2);
 		break;
 	case 4:
 		// Call calculate_area function (placeholder)
+
+		printf("please input a double");
+		double radius = 0.0;
+		fgets(input, sizeof(input), stdin);
+		sscanf_s(input, "%lf", &radius);
+		double result = calculateArea(radius);
+		printf("The result of calculateArea is %lf\n", result);
 		break;
 	case 5:
 		printf("Enter a number: ");
@@ -80,6 +92,7 @@ int main(void) {
 // Student 1: Implement greet() function
 void greet(void) {
 	// Placeholder
+	printf("Hello friends, This is collaborative project in C Programming II Class\n");
 }
 
 // Student 2: Modify add() function to take user input
@@ -91,25 +104,24 @@ int add(int a, int b) {
 }
 
 // Student 3: Complete subtract() function
-int (*SubtractPtr)(int);
-SubtractPtr = subtract;
-int subtract(int num1, int num2, int difference) {
+int subtract(int num1, int num2) {
 	// Placeholder
 
-	printf("please enter in first number:");
-	scanf("%d", num1);
-	printf("please enter second number:");
-	scanf("%d", num2);
-	difference = num1 - num2;
-	printf("The answer of %d subtract %d is equal to %d", num1, num2, difference);
-
-	return 0; // Replace with actual logic
+	//printf("please enter in first number:");
+	//scanf_s("%d", &num1);
+	//printf("please enter second number:");
+	//scanf_s("%d", &num2);
+	//int difference = num1 - num2;
+	//printf("The answer of %d subtract %d is equal to %d", num1, num2, difference);
+	int result = num1 - num2;
+	return result; // Replace with actual logic
 }
 
 // Student 4: Implement calculate_area() function
 double calculateArea(double radius) {
-	// Placeholder
-	return 0.0; // Replace with actual logic
+
+	double area = 3.1415926 * (pow(radius, 2));
+	return area;
 }
 
 // Student 5: Develop factorial() function
