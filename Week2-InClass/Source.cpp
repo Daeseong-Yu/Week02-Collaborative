@@ -18,7 +18,7 @@ int main(void) {
     // Function pointer
     int (*funcPtr)(int, int);
     funcPtr = add;
-    int num1, num2;
+    int num1, num2, result;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -46,7 +46,7 @@ int main(void) {
 
         printf("Enter the second number to add: ");
         scanf_s("%d", &num2);
-        int result = funcPtr(num1, num2);
+        result = funcPtr(num1, num2);
         printf("The result of %d + %d is %d\n", num1, num2, result);
         break;
     case 3:
