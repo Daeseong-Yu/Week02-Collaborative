@@ -15,6 +15,8 @@ int main(void) {
     // Variable declarations
 	int (*Factorialptr)(int n); // Function pointer for factorial function
 	Factorialptr = factorial; // Assign the address of the factorial function to the pointer
+	void (*greetptr)(void); //Function pointer for greet function
+	greetptr = greet; // Assign the address of the greet function to the pointer
     int choice;
     char input[100]; // For safer input handling
 
@@ -34,7 +36,7 @@ int main(void) {
     // Use a switch-case to handle menu options
     switch (choice) {
     case 1:
-        greet(); // Call greet function
+		greetptr(); // Call greet function using function pointer
         break;
     case 2:
         // Call add function (placeholder)
@@ -64,7 +66,7 @@ int main(void) {
 
 // Student 1: Implement greet() function
 void greet(void) {
-    // Placeholder
+    printf("Greetings, Fellow Homo sapiens\n");
 }
 
 // Student 2: Modify add() function to take user input
