@@ -6,7 +6,7 @@
 // Function declarations
 void greet(void);                    // Student 1
 int add(int a, int b);               // Student 2
-int subtract(int a, int b);          // Student 3
+int subtract(int num1, int num2, int difference);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
@@ -37,8 +37,9 @@ int main(void) {
     case 2:
         // Call add function (placeholder)
         break;
-    case 3:
-        // Call subtract function (placeholder)
+    case 3: 
+        SubtractPtr(); // Call subtract function (placeholder)
+      
         break;
     case 4:
         // Call calculate_area function (placeholder)
@@ -67,9 +68,20 @@ int add(int a, int b) {
     return 0; // Replace with actual logic
 }
 
+
 // Student 3: Complete subtract() function
-int subtract(int a, int b) {
+int (*SubtractPtr)(int);
+SubtractPtr = subtract;
+int subtract(int num1, int num2 , int difference ) {
     // Placeholder
+
+    printf("please enter in first number:");
+    scanf("%d", num1);
+    printf("please enter second number:");
+    scanf("%d", num2);
+    difference = num1 - num2;
+    printf("The answer of %d subtract %d is equal to %d", num1, num2, difference);
+
     return 0; // Replace with actual logic
 }
 
