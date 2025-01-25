@@ -15,6 +15,8 @@ void getNumber(int*);               //
 int main(void) {
     // Variable declarations
     int choice = 0;
+	int (*Factorialptr)(int n); // Function pointer for factorial function
+	Factorialptr = factorial; // Assign the address of the factorial function to the pointer
     char input[100]; // For safer input handling
 
     int (*calculateFunc[])(int, int) = { NULL, add, subtract, NULL, NULL, NULL };
@@ -48,7 +50,11 @@ int main(void) {
         // Call calculate_area function (placeholder)
         break;
     case 5:
-        // Call factorial function (placeholder)
+		printf("Enter a number: ");
+		if (fgets(input, sizeof(input), stdin) != NULL) {
+			sscanf_s(input, "%d", &choice);
+		}
+		printf("Factorial of %d is %llu\n", choice, Factorialptr(choice)); // Call factorial function using function pointer
         break;
     default:
         printf("Invalid choice. Please try again.\n");
@@ -85,8 +91,12 @@ double calculateArea(double radius) {
 
 // Student 5: Develop factorial() function
 unsigned long long factorial(int n) {
-    // Placeholder
-    return 0; // Replace with actual logic
+	if (n >= 1) {
+		return n * factorial(n - 1);
+    } else {
+        return 1;
+    }
+     ; // Replace with actual logic
 }
 
 // Student 6: Implement display_menu() function
