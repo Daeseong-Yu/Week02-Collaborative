@@ -42,6 +42,12 @@ int main(void) {
         break;
     case 4:
         // Call calculate_area function (placeholder)
+
+        printf("please input a double");
+        fgets(20, 20, stdin);
+        double radius;
+        ;
+        calculateArea(radius);
         break;
     case 5:
         // Call factorial function (placeholder)
