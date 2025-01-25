@@ -10,11 +10,16 @@ int subtract(int a, int b);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
+void getNumber(int*);               // 
 
 int main(void) {
     // Variable declarations
-    int choice;
+    int choice = 0;
     char input[100]; // For safer input handling
+
+    int (*calculateFunc[])(int, int) = { NULL, add, subtract, NULL, NULL, NULL };
+    int result = 0;
+    int numA = 0, numB = 0;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -25,8 +30,7 @@ int main(void) {
     // Accept user input for menu selection
     printf("\nEnter your choice: ");
     if (fgets(input, sizeof(input), stdin) != NULL) {
-        // Parse the input (placeholder)
-        // Example: sscanf_s(input, "%d", &choice);
+        sscanf_s(input, "%d", &choice);
     }
 
     // Use a switch-case to handle menu options
@@ -35,10 +39,10 @@ int main(void) {
         greet(); // Call greet function
         break;
     case 2:
-        // Call add function (placeholder)
-        break;
     case 3:
-        // Call subtract function (placeholder)
+        getNumber(&numA);
+        getNumber(&numB);
+        result = (*calculateFunc[choice - 1])(numA, numB);
         break;
     case 4:
         // Call calculate_area function (placeholder)
@@ -94,4 +98,14 @@ void displayMenu(void) {
     printf("3. Subtract two numbers\n");
     printf("4. Calculate the area of a circle\n");
     printf("5. Calculate the factorial of a number\n");
+}
+
+void getNumber(int* numbers) {
+    char input[100] = "";
+
+    printf("Please input a number: ");
+
+	if (fgets(input, sizeof(input), stdin) != NULL) {
+        sscanf_s(input, "%d", numbers);
+	}
 }
