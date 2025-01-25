@@ -59,6 +59,7 @@ int main(void) {
 // Student 1: Implement greet() function
 void greet(void) {
     // Placeholder
+    printf("Hello, This is collaborative project in C Programming II\n");
 }
 
 // Student 2: Modify add() function to take user input
