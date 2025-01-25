@@ -15,6 +15,9 @@ int main(void) {
     // Variable declarations
     int choice;
     char input[100]; // For safer input handling
+    int (*funcPtr)(int, int);
+    funcPtr = add;
+    int num1, num2;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -26,7 +29,7 @@ int main(void) {
     printf("\nEnter your choice: ");
     if (fgets(input, sizeof(input), stdin) != NULL) {
         // Parse the input (placeholder)
-        // Example: sscanf_s(input, "%d", &choice);
+        sscanf_s(input, "%d", &choice);
     }
 
     // Use a switch-case to handle menu options
@@ -36,6 +39,13 @@ int main(void) {
         break;
     case 2:
         // Call add function (placeholder)
+        printf("Enter the first number to add: ");
+        scanf_s("%d", &num1);
+
+        printf("Enter the second number to add: ");
+        scanf_s("%d", &num2);
+        int result = funcPtr(num1, num2);
+        printf("The result of %d + %d is %d\n", num1, num2, result);
         break;
     case 3:
         // Call subtract function (placeholder)
@@ -64,7 +74,9 @@ void greet(void) {
 // Student 2: Modify add() function to take user input
 int add(int a, int b) {
     // Placeholder
-    return 0; // Replace with actual logic
+    int result;
+    result = a + b;
+    return result; // Replace with actual logic
 }
 
 // Student 3: Complete subtract() function
